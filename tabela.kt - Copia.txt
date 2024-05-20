@@ -1,0 +1,263 @@
+package com.example.projeto
+
+import android.os.Bundle
+import android.view.View
+import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import com.example.projeto.databinding.ActivityDatesBinding
+import com.example.projeto.databinding.ActivityMainBinding
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.ValueEventListener
+import kotlin.random.Random
+
+class DatesActivity : AppCompatActivity(), View.OnClickListener {
+
+    private lateinit var binding: ActivityDatesBinding
+    private lateinit var database: DatabaseReference
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.tabela_activity)
+        FirebaseApp.initializeApp(this)
+
+        database = FirebaseDatabase.getInstance().reference
+        binding = ActivityDatesBinding.inflate(layoutInflater)
+
+        val cinema: MutableList<String> = mutableListOf()
+        val zoologico: MutableList<String> = mutableListOf()
+        val chocolate: MutableList<String> = mutableListOf()
+        val amendoim: MutableList<String> = mutableListOf()
+        val pelos: MutableList<String> = mutableListOf()
+        val peixes: MutableList<String> = mutableListOf()
+        val frutas: MutableList<String> = mutableListOf()
+        val frases: MutableList<String> = mutableListOf()
+
+        val temCinema = intent.getStringExtra("EXTRA_CINEMA")
+        val temZoologico = intent.getStringExtra("EXTRA_ZOOLOGICO")
+        val temChocolate = intent.getStringExtra("EXTRA_CHOCOLATE")
+        val temFrutas = intent.getStringExtra("EXTRA_FRUTAS")
+        val temAmendoim = intent.getStringExtra("EXTRA_AMENDOIM")
+        val temPeixes = intent.getStringExtra("EXTRA_PEIXES")
+        val temPelo = intent.getStringExtra("EXTRA_PELO")
+
+        for (i in 1..3) {
+            cinema.add(database.child("Cinema").child("Frase$i + 1"))
+            zoologico.add(database.child("Zoologico").child("Frase$i + 1"))
+            chocolate.add(database.child("Chocolate").child("Frase$i + 1"))
+            amendoim.add(database.child("Amendoim").child("Frase$i + 1"))
+            pelos.add(database.child("Pelos").child("Frase$i + 1"))
+            peixes.add(database.child("Peixes").child("Frase$i + 1"))
+            frutas.add(database.child("Frutas").child("Frase$i + 1"))
+        }
+
+        Toast.makeText(this, cinema[0], Toast.LENGTH_LONG).show()
+
+        if (temCinema == "true") {
+            cinema.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+
+                        for (childSnapshot in snapshot.children) {
+                            val frase = childSnapshot.getValue(String::class.java)
+                            if (frase != null) {
+                                frases.add(frase)
+                                binding.textDia1.text = frase
+                            }
+                        }
+
+                        val randomIndex = Random.nextInt(cinema.size)
+                        val fraseCinema = zoologico[randomIndex]
+                        binding.textDia30.text = fraseCinema
+
+                    } else {
+                        Log.d("Firebase", "No data found")
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.e("Firebase", "Erro ao ler dados: ", error.toException())
+                }
+
+            })
+        }
+
+        if (temZoologico == "true") {
+            zoologico.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+
+                        for (childSnapshot in snapshot.children) {
+                            val frase = childSnapshot.getValue(String::class.java)
+                            if (frase != null) {
+                                frases.add(frase)
+                            }
+                        }
+
+                        val randomIndex = Random.nextInt(zoologico.size)
+                        val fraseZoologico = zoologico[randomIndex]
+                        binding.textDia2.text = fraseZoologico
+
+                    } else {
+                        Log.d("Firebase", "No data found")
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.e("Firebase", "Erro ao ler dados: ", error.toException())
+                }
+
+            })
+        }
+
+        if (temChocolate == "true") {
+            chocolate.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+
+                        for (childSnapshot in snapshot.children) {
+                            val frase = childSnapshot.getValue(String::class.java)
+                            if (frase != null) {
+                                frases.add(frase)
+                            }
+                        }
+
+                        val randomIndex = Random.nextInt(chocolate.size)
+                        val fraseChocolate = chocolate[randomIndex]
+                        binding.textDia3.text = fraseChocolate
+
+                    } else {
+                        Log.d("Firebase", "No data found")
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.e("Firebase", "Erro ao ler dados: ", error.toException())
+                }
+
+            })
+        }
+
+        if (temFrutas == "true") {
+            frutas.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+
+                        for (childSnapshot in snapshot.children) {
+                            val frase = childSnapshot.getValue(String::class.java)
+                            if (frase != null) {
+                                frases.add(frase)
+                            }
+                        }
+
+                        val randomIndex = Random.nextInt(frutas.size)
+                        val fraseFrutas = frutas[randomIndex]
+                        binding.textDia4.text = fraseFrutas
+
+                    } else {
+                        Log.d("Firebase", "No data found")
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.e("Firebase", "Erro ao ler dados: ", error.toException())
+                }
+
+            })
+        }
+
+        if (temAmendoim == "true") {
+            amendoim.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+
+                        for (childSnapshot in snapshot.children) {
+                            val frase = childSnapshot.getValue(String::class.java)
+                            if (frase != null) {
+                                frases.add(frase)
+                            }
+                        }
+
+                        val randomIndex = Random.nextInt(amendoim.size)
+                        val fraseAmendoim = amendoim[randomIndex]
+                        binding.textDia5.text = fraseAmendoim
+
+                    } else {
+                        Log.d("Firebase", "No data found")
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.e("Firebase", "Erro ao ler dados: ", error.toException())
+                }
+
+            })
+        }
+
+        if (temPeixes == "true") {
+            peixes.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+
+                        for (childSnapshot in snapshot.children) {
+                            val frase = childSnapshot.getValue(String::class.java)
+                            if (frase != null) {
+                                frases.add(frase)
+                            }
+                        }
+
+                        val randomIndex = Random.nextInt(peixes.size)
+                        val frasePeixes = zoologico[randomIndex]
+                        binding.textDia6.text = frasePeixes
+
+
+                    } else {
+                        Log.d("Firebase", "No data found")
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.e("Firebase", "Erro ao ler dados: ", error.toException())
+                }
+
+            })
+        }
+
+        if (temPelo == "true") {
+            pelos.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+
+                        for (childSnapshot in snapshot.children) {
+                            val frase = childSnapshot.getValue(String::class.java)
+                            if (frase != null) {
+                                frases.add(frase)
+                            }
+                        }
+
+                        val randomIndex = Random.nextInt(pelos.size)
+                        val frasePelo = pelos[randomIndex]
+                        binding.textDia30.text = frasePelos
+
+                    } else {
+                        Log.d("Firebase", "No data found")
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.e("Firebase", "Erro ao ler dados: ", error.toException())
+                }
+
+            })
+        }
+
+
+    }
+
+    override fun onClick(v: View?) {
+        TODO("Not yet implemented")
+    }
+
+}

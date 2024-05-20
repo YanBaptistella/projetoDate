@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CBABFA"
+    tools:context=".PreferenciasActivity">
+
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/title_backgroud"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/pink"
+                    android:padding="16dp"
+                    android:text="Date Love (´▽`ʃ♡ƪ)"
+                    android:textColor="@color/white"
+                    android:textSize="32dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/text_preferencias"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="100dp"
+                android:layout_marginBottom="8dp"
+                android:text="PREFERÊNCIAS:"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:textStyle="bold|italic" />
+
+
+            <TextView
+                android:id="@+id/text_gostos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_preferencias"
+                android:layout_centerHorizontal="true"
+                android:layout_marginVertical="32dp"
+                android:text="Gostos:"
+                android:textColor="@color/darkPink"
+                android:textSize="20dp"
+                android:textStyle="bold|italic" />
+
+            <RelativeLayout
+                android:id="@+id/relative_gostos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_gostos"
+                android:layout_marginHorizontal="45dp"
+                android:layout_marginTop="-32dp">
+
+                <CheckBox
+                    android:id="@+id/check_cinema"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Cinema 🍿" />
+
+                <CheckBox
+                    android:id="@+id/check_zoologico"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_below="@+id/check_cinema"
+                    android:text="Zoológico 🐒" />
+
+                <CheckBox
+                    android:id="@+id/check_chocolate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="97dp"
+                    android:textStyle="bold"
+                    android:layout_toEndOf="@+id/check_cinema"
+                    android:text="Chocolate 🍫" />
+
+                <CheckBox
+                    android:id="@+id/check_frutas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/check_chocolate"
+                    android:layout_marginStart="84dp"
+                    android:textStyle="bold"
+                    android:layout_toEndOf="@+id/check_zoologico"
+                    android:text="Frutas 🍉" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/text_desgostos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relative_gostos"
+                android:layout_centerHorizontal="true"
+                android:layout_marginVertical="32dp"
+                android:text="Desgostos:"
+                android:textColor="@color/darkPink"
+                android:textSize="20dp"
+                android:textStyle="bold|italic" />
+
+            <RelativeLayout
+                android:id="@+id/relative_desgostos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_desgostos"
+                android:layout_marginHorizontal="45dp"
+                android:layout_marginTop="-32dp">
+
+                <CheckBox
+                    android:id="@+id/check_cinemaDesgosto"
+                    android:layout_width="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_height="wrap_content"
+                    android:text="Cinema 🍿" />
+
+                <CheckBox
+                    android:id="@+id/check_zoologicoDesgosto"
+                    android:layout_width="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/check_cinemaDesgosto"
+                    android:text="Zoológico 🐒" />
+
+                <CheckBox
+                    android:id="@+id/check_chocolateDesgosto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="97dp"
+                    android:textStyle="bold"
+                    android:layout_toEndOf="@+id/check_cinemaDesgosto"
+                    android:text="Chocolate 🍫" />
+
+                <CheckBox
+                    android:id="@+id/check_frutasDesgosto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/check_chocolateDesgosto"
+                    android:layout_marginStart="84dp"
+                    android:textStyle="bold"
+                    android:layout_toEndOf="@+id/check_zoologicoDesgosto"
+                    android:text="Frutas 🍉" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/text_alergias"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relative_desgostos"
+                android:layout_centerHorizontal="true"
+                android:layout_marginVertical="32dp"
+                android:text="Alergias:"
+                android:textColor="@color/darkPink"
+                android:textSize="20dp"
+                android:textStyle="bold|italic" />
+
+            <RelativeLayout
+                android:id="@+id/relative_alergias"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_alergias"
+                android:layout_marginHorizontal="45dp"
+                android:layout_marginTop="-32dp">
+
+                <CheckBox
+                    android:id="@+id/check_amendoim"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Amendoim 🥜" />
+
+                <CheckBox
+                    android:id="@+id/check_peixes"
+                    android:layout_width="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/check_amendoim"
+                    android:text="Frutos do Mar 🐟" />
+
+                <CheckBox
+                    android:id="@+id/check_leite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_marginStart="80dp"
+                    android:layout_toEndOf="@+id/check_amendoim"
+                    android:text="Leite 🍼" />
+
+                <CheckBox
+                    android:id="@+id/check_pelo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/check_leite"
+                    android:layout_marginStart="60dp"
+                    android:textStyle="bold"
+                    android:layout_toEndOf="@+id/check_peixes"
+                    android:text="Pelos 🐶" />
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/button_enviar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relative_alergias"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="64dp"
+                android:backgroundTint="@color/darkPink"
+                android:paddingHorizontal="64dp"
+                android:text="Enviar"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

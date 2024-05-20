@@ -1,0 +1,386 @@
+package com.example.projeto
+
+import android.os.Bundle
+import android.view.View
+import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import com.example.projeto.databinding.ActivityDatesBinding
+import com.example.projeto.databinding.ActivityMainBinding
+import kotlin.random.Random
+
+class DatesActivity : AppCompatActivity(), View.OnClickListener {
+
+    private lateinit var binding: ActivityDatesBinding
+    private lateinit var bindingAnterior: ActivityMainBinding
+
+    val cinema: List<String> = listOf(
+        "Assistir um filme clássico",
+        "Maratona de filmes em casa com pipoca",
+        "Ir a uma estreia de filme",
+        "Assistir a um filme em um drive-in",
+        "Assistir um filminho no Kinoplex",
+        "Assistir a um filme no parque Vicentino Aranha",
+        "Fazer uma noite de filmes de terror",
+        "Visitar um museu de cinema",
+        "Dar uma passadinha no Cinemark",
+        "Dar umas beijocas no Cinépolis"
+    )
+
+    val zoologico: List<String> = listOf(
+        "Visitar os animais aquaticos!",
+        "Dar um oi para os animais terrestres!",
+        "Invejar animais voadores!"
+    )
+    val chocolate: List<String> = listOf(
+        "Comprar uma cesta da CacauShow!",
+        "Dar um boquê de bombons para seu parceiro",
+        "Visitar a Nestle!"
+    )
+    val frutas: List<String> = listOf(
+        "Roubar umas frutas no OBA!",
+        "Fazer umas comprinhas na feira!",
+        "Preparar uma salada de frutas deliciosa!"
+    )
+    val amendoim: List<String> = listOf(
+        "Dar nozes para esquilos!",
+        "Preparar uma paçoca juntos!",
+        "Disputa de quem abre mais nozes!"
+    )
+    val peixe: List<String> = listOf(
+        "Passar a tarde num pesqueiro!",
+        "Visitar o aquário de São Paulo",
+        "Alimentar os peixes do lago!"
+    )
+    val pelos: List<String> = listOf(
+        "Visitar um centro de adoções!",
+        "Passear com o cachorro no parque!",
+        "Maratonar bichos curiosos!"
+    )
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityDatesBinding.inflate(layoutInflater)
+        bindingAnterior = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+
+        val temCinema = intent.getStringExtra("EXTRA_CINEMA")
+        val temZoologico = intent.getStringExtra("EXTRA_ZOOLOGICO")
+        val temChocolate = intent.getStringExtra("EXTRA_CHOCOLATE")
+        val temFrutas = intent.getStringExtra("EXTRA_FRUTAS")
+        val temAmendoim = intent.getStringExtra("EXTRA_AMENDOIM")
+        val temPeixes = intent.getStringExtra("EXTRA_PEIXES")
+        val temPelo = intent.getStringExtra("EXTRA_PELO")
+
+        if (temCinema == "true") {
+            val randomIndex = Random.nextInt(cinema.size)
+            val fraseCinema = cinema[randomIndex]
+            binding.textDia1.text = fraseCinema
+        } else {
+            val randomIndex = Random.nextInt(zoologico.size)
+            val fraseZoologico = zoologico[randomIndex]
+            binding.textDia1.text = fraseZoologico
+        }
+
+        if (temChocolate == "true") {
+            val randomIndex = Random.nextInt(chocolate.size)
+            val fraseChocolate = chocolate[randomIndex]
+            binding.textDia2.text = fraseChocolate
+        } else {
+            val randomIndex = Random.nextInt(frutas.size)
+            val fraseFrutas = frutas[randomIndex]
+            binding.textDia2.text = fraseFrutas
+        }
+
+        if (temAmendoim == "false") {
+            val randomIndex = Random.nextInt(amendoim.size)
+            val fraseAmendoim = amendoim[randomIndex]
+            binding.textDia3.text = fraseAmendoim
+        } else {
+            val randomIndex = Random.nextInt(peixe.size)
+            val frasePeixe = peixe[randomIndex]
+            binding.textDia3.text = frasePeixe
+        }
+
+        if (temPelo == "false") {
+            val randomIndex = Random.nextInt(pelos.size)
+            val frasePelo = pelos[randomIndex]
+            binding.textDia4.text = frasePelo
+        } else {
+            val randomIndex = Random.nextInt(peixe.size)
+            val frasePeixe = peixe[randomIndex]
+            binding.textDia4.text = frasePeixe
+        }
+
+        if (temZoologico == "true") {
+            val randomIndex = Random.nextInt(zoologico.size)
+            val fraseAmendoim = zoologico[randomIndex]
+            binding.textDia5.text = fraseAmendoim
+        } else {
+            val randomIndex = Random.nextInt(frutas.size)
+            val frasePeixe = frutas[randomIndex]
+            binding.textDia5.text = frasePeixe
+        }
+
+        if (temCinema == "true") {
+            val randomIndex = Random.nextInt(cinema.size)
+            val fraseCinema = cinema[randomIndex]
+            binding.textDia6.text = fraseCinema
+        } else {
+            val randomIndex = Random.nextInt(zoologico.size)
+            val fraseZoologico = zoologico[randomIndex]
+            binding.textDia6.text = fraseZoologico
+        }
+
+        if (temChocolate == "true") {
+            val randomIndex = Random.nextInt(chocolate.size)
+            val fraseChocolate = chocolate[randomIndex]
+            binding.textDia7.text = fraseChocolate
+        } else {
+            val randomIndex = Random.nextInt(frutas.size)
+            val fraseFrutas = frutas[randomIndex]
+            binding.textDia7.text = fraseFrutas
+        }
+
+        if (temAmendoim == "false") {
+            val randomIndex = Random.nextInt(amendoim.size)
+            val fraseAmendoim = amendoim[randomIndex]
+            binding.textDia8.text = fraseAmendoim
+        } else {
+            val randomIndex = Random.nextInt(peixe.size)
+            val frasePeixe = peixe[randomIndex]
+            binding.textDia8.text = frasePeixe
+        }
+
+        if (temPelo == "false") {
+            val randomIndex = Random.nextInt(pelos.size)
+            val frasePelo = pelos[randomIndex]
+            binding.textDia9.text = frasePelo
+        } else {
+            val randomIndex = Random.nextInt(peixe.size)
+            val frasePeixe = peixe[randomIndex]
+            binding.textDia9.text = frasePeixe
+        }
+
+        if (temZoologico == "true") {
+            val randomIndex = Random.nextInt(zoologico.size)
+            val fraseAmendoim = zoologico[randomIndex]
+            binding.textDia10.text = fraseAmendoim
+        } else {
+            val randomIndex = Random.nextInt(frutas.size)
+            val frasePeixe = frutas[randomIndex]
+            binding.textDia10.text = frasePeixe
+        }
+        if (temCinema == "true") {
+            val randomIndex = Random.nextInt(cinema.size)
+            val fraseCinema = cinema[randomIndex]
+            binding.textDia11.text = fraseCinema
+        } else {
+            val randomIndex = Random.nextInt(zoologico.size)
+            val fraseZoologico = zoologico[randomIndex]
+            binding.textDia11.text = fraseZoologico
+        }
+
+        if (temChocolate == "true") {
+            val randomIndex = Random.nextInt(chocolate.size)
+            val fraseChocolate = chocolate[randomIndex]
+            binding.textDia12.text = fraseChocolate
+        } else {
+            val randomIndex = Random.nextInt(frutas.size)
+            val fraseFrutas = frutas[randomIndex]
+            binding.textDia12.text = fraseFrutas
+        }
+
+        if (temAmendoim == "false") {
+            val randomIndex = Random.nextInt(amendoim.size)
+            val fraseAmendoim = amendoim[randomIndex]
+            binding.textDia13.text = fraseAmendoim
+        } else {
+            val randomIndex = Random.nextInt(peixe.size)
+            val frasePeixe = peixe[randomIndex]
+            binding.textDia13.text = frasePeixe
+        }
+
+        if (temPelo == "false") {
+            val randomIndex = Random.nextInt(pelos.size)
+            val frasePelo = pelos[randomIndex]
+            binding.textDia14.text = frasePelo
+        } else {
+            val randomIndex = Random.nextInt(peixe.size)
+            val frasePeixe = peixe[randomIndex]
+            binding.textDia14.text = frasePeixe
+        }
+
+        if (temZoologico == "true") {
+            val randomIndex = Random.nextInt(zoologico.size)
+            val fraseAmendoim = zoologico[randomIndex]
+            binding.textDia15.text = fraseAmendoim
+        } else {
+            val randomIndex = Random.nextInt(frutas.size)
+            val frasePeixe = frutas[randomIndex]
+            binding.textDia15.text = frasePeixe
+        }
+        if (temCinema == "true") {
+            val randomIndex = Random.nextInt(cinema.size)
+            val fraseCinema = cinema[randomIndex]
+            binding.textDia16.text = fraseCinema
+        } else {
+            val randomIndex = Random.nextInt(zoologico.size)
+            val fraseZoologico = zoologico[randomIndex]
+            binding.textDia16.text = fraseZoologico
+        }
+
+        if (temChocolate == "true") {
+            val randomIndex = Random.nextInt(chocolate.size)
+            val fraseChocolate = chocolate[randomIndex]
+            binding.textDia17.text = fraseChocolate
+        } else {
+            val randomIndex = Random.nextInt(frutas.size)
+            val fraseFrutas = frutas[randomIndex]
+            binding.textDia17.text = fraseFrutas
+        }
+
+        if (temAmendoim == "false") {
+            val randomIndex = Random.nextInt(amendoim.size)
+            val fraseAmendoim = amendoim[randomIndex]
+            binding.textDia18.text = fraseAmendoim
+        } else {
+            val randomIndex = Random.nextInt(peixe.size)
+            val frasePeixe = peixe[randomIndex]
+            binding.textDia18.text = frasePeixe
+        }
+
+        if (temPelo == "false") {
+            val randomIndex = Random.nextInt(pelos.size)
+            val frasePelo = pelos[randomIndex]
+            binding.textDia19.text = frasePelo
+        } else {
+            val randomIndex = Random.nextInt(peixe.size)
+            val frasePeixe = peixe[randomIndex]
+            binding.textDia19.text = frasePeixe
+        }
+
+        if (temZoologico == "true") {
+            val randomIndex = Random.nextInt(zoologico.size)
+            val fraseAmendoim = zoologico[randomIndex]
+            binding.textDia20.text = fraseAmendoim
+        } else {
+            val randomIndex = Random.nextInt(frutas.size)
+            val frasePeixe = frutas[randomIndex]
+            binding.textDia20.text = frasePeixe
+        }
+
+        if (temCinema == "true") {
+            val randomIndex = Random.nextInt(cinema.size)
+            val fraseCinema = cinema[randomIndex]
+            binding.textDia21.text = fraseCinema
+        } else {
+            val randomIndex = Random.nextInt(zoologico.size)
+            val fraseZoologico = zoologico[randomIndex]
+            binding.textDia21.text = fraseZoologico
+        }
+
+        if (temChocolate == "true") {
+            val randomIndex = Random.nextInt(chocolate.size)
+            val fraseChocolate = chocolate[randomIndex]
+            binding.textDia22.text = fraseChocolate
+        } else {
+            val randomIndex = Random.nextInt(frutas.size)
+            val fraseFrutas = frutas[randomIndex]
+            binding.textDia22.text = fraseFrutas
+        }
+
+        if (temAmendoim == "false") {
+            val randomIndex = Random.nextInt(amendoim.size)
+            val fraseAmendoim = amendoim[randomIndex]
+            binding.textDia23.text = fraseAmendoim
+        } else {
+            val randomIndex = Random.nextInt(peixe.size)
+            val frasePeixe = peixe[randomIndex]
+            binding.textDia23.text = frasePeixe
+        }
+
+        if (temPelo == "false") {
+            val randomIndex = Random.nextInt(pelos.size)
+            val frasePelo = pelos[randomIndex]
+            binding.textDia24.text = frasePelo
+        } else {
+            val randomIndex = Random.nextInt(peixe.size)
+            val frasePeixe = peixe[randomIndex]
+            binding.textDia24.text = frasePeixe
+        }
+
+        if (temZoologico == "true") {
+            val randomIndex = Random.nextInt(zoologico.size)
+            val fraseAmendoim = zoologico[randomIndex]
+            binding.textDia25.text = fraseAmendoim
+        } else {
+            val randomIndex = Random.nextInt(frutas.size)
+            val frasePeixe = frutas[randomIndex]
+            binding.textDia25.text = frasePeixe
+        }
+
+        if (temCinema == "true") {
+            val randomIndex = Random.nextInt(cinema.size)
+            val fraseCinema = cinema[randomIndex]
+            binding.textDia26.text = fraseCinema
+        } else {
+            val randomIndex = Random.nextInt(zoologico.size)
+            val fraseZoologico = zoologico[randomIndex]
+            binding.textDia26.text = fraseZoologico
+        }
+
+        if (temChocolate == "true") {
+            val randomIndex = Random.nextInt(chocolate.size)
+            val fraseChocolate = chocolate[randomIndex]
+            binding.textDia27.text = fraseChocolate
+        } else {
+            val randomIndex = Random.nextInt(frutas.size)
+            val fraseFrutas = frutas[randomIndex]
+            binding.textDia27.text = fraseFrutas
+        }
+
+        if (temAmendoim == "false") {
+            val randomIndex = Random.nextInt(amendoim.size)
+            val fraseAmendoim = amendoim[randomIndex]
+            binding.textDia28.text = fraseAmendoim
+        } else {
+            val randomIndex = Random.nextInt(peixe.size)
+            val frasePeixe = peixe[randomIndex]
+            binding.textDia28.text = frasePeixe
+        }
+
+        if (temPelo == "false") {
+            val randomIndex = Random.nextInt(pelos.size)
+            val frasePelo = pelos[randomIndex]
+            binding.textDia29.text = frasePelo
+        } else {
+            val randomIndex = Random.nextInt(peixe.size)
+            val frasePeixe = peixe[randomIndex]
+            binding.textDia29.text = frasePeixe
+        }
+
+        if (temZoologico == "true") {
+            val randomIndex = Random.nextInt(zoologico.size)
+            val fraseAmendoim = zoologico[randomIndex]
+            binding.textDia30.text = fraseAmendoim
+        } else {
+            val randomIndex = Random.nextInt(frutas.size)
+            val frasePeixe = frutas[randomIndex]
+            binding.textDia30.text = frasePeixe
+        }
+
+
+
+    }
+
+
+    override fun onClick(v: View?) {
+
+    }
+
+}
